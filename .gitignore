@@ -1,0 +1,62 @@
+# ======================================
+# Python / Django / WSL Project .gitignore
+# ======================================
+
+# --- Python ---
+__pycache__/
+*.py[cod]
+*$py.class
+
+# --- Entorno virtual ---
+venv/
+.env/
+env/
+.venv/
+
+# --- Django / SQLite ---
+db.sqlite3
+*.sqlite3
+
+# Archivos de migraciones compilados
+*/migrations/__pycache__/
+*/migrations/*.pyc
+
+# --- Configuración y secretos ---
+*.env
+.env.*
+secrets.json
+config.json
+
+# --- Archivos temporales ---
+*.log
+*.pot
+*.pyc
+*.pyo
+*.orig
+*.out
+*.bak
+*.swp
+*.swo
+
+# --- Archivos del sistema operativo ---
+.DS_Store
+Thumbs.db
+
+# --- Archivos de IDEs ---
+.vscode/
+.idea/
+*.code-workspace
+
+# --- Caches ---
+.cache/
+pytest_cache/
+.coverage
+htmlcov/
+*.egg-info/
+.eggs/
+dist/
+build/
+
+# --- Archivos específicos de WSL ---
+*.pid
+*.sock
