@@ -26,7 +26,7 @@ def invoices(request):
             if not(trib_calc(invoice)):
                 return JsonResponse({'message': 'Error al hacer el calculo tributario', 'id': invoice.id})
     
-            return JsonResponse({'message': 'Factura creada', 'id': invoice.id})
+            return JsonResponse({'message': 'Correo enviado al cliente', 'id': invoice.client_name})
         except Exception as e:
             return JsonResponse({'error': str(e)}, status=400)
 
