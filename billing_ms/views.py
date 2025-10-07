@@ -4,6 +4,7 @@ import json
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from .models import Invoice
+from ms.all_ms import *
 
 @csrf_exempt  # desactiva la verificación CSRF (solo para pruebas)
 def invoices(request):
@@ -18,6 +19,13 @@ def invoices(request):
                 client_name=body['client_name'],
                 amount=body['amount']
             )
+
+            if not(validate_client(invoice)):
+                return JsonResponse({'message': 'Error al validar el cliente', 'id': invoice.id})
+
+            if not(trib_calc(invoice)):
+                return JsonResponse({'message': 'Error al hacer el calculo tributario', 'id': invoice.id})
+    
             return JsonResponse({'message': 'Factura creada', 'id': invoice.id})
         except Exception as e:
             return JsonResponse({'error': str(e)}, status=400)
